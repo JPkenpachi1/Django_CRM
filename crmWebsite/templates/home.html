@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-6 offset-md-3">
+<br/>
+{% if user.is_authenticated %} 
+<h1>Hello World</h1> 
+
+ {% else %}
+   <h1>Login Form </h1>
+<form method='POST' action = "{% url 'home' %}">
+    {% csrf_token %} {% comment %}  this is needed when we use it in a form due to stop hacking  {% endcomment %}
+        <div class="mb-3">
+      
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" placeholder="username" required>
+         
+        </div>
+        <div class="mb-3">
+          
+          <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="password" required >
+        </div>
+        
+        <button type="submit" class="btn btn-secondary">Login</button>
+      
+</form>
+</div>
+{% endif %}
+{% endblock  %}
+
